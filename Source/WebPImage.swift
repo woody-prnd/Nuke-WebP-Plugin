@@ -20,13 +20,13 @@ public class WebPImageDecoder: Nuke.ImageDecoding {
     }
 
     public func decode(_ data: Data) -> ImageContainer? {
-        guard data.isWebPFormat else { return nil }
+//        guard data.isWebPFormat else { return nil }
         guard let image = _decode(data) else { return nil }
         return ImageContainer(image: image)
     }
 
     public func decodePartiallyDownloadedData(_ data: Data) -> ImageContainer? {
-        guard data.isWebPFormat else { return nil }
+//        guard data.isWebPFormat else { return nil }
         guard let image = decoder.incrementallyDecode(data) else { return nil }
         return ImageContainer(image: image)
     }
@@ -43,7 +43,7 @@ extension WebPImageDecoder {
     }
 
     public static func enable(context: Nuke.ImageDecodingContext) -> Nuke.ImageDecoding? {
-        return context.data.isWebPFormat ? WebPImageDecoder() : nil
+        WebPImageDecoder()
     }
 
 }
